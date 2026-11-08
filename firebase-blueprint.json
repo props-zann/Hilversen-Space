@@ -1,0 +1,150 @@
+{
+  "entities": {
+    "CmsSettings": {
+      "title": "CMS Settings",
+      "description": "Global store and landing page CMS settings",
+      "type": "object",
+      "properties": {
+        "heroTitle": { "type": "string", "maxLength": 200 },
+        "heroSubtitle": { "type": "string", "maxLength": 200 },
+        "heroSuffix": { "type": "string", "maxLength": 200 },
+        "heroDescription": { "type": "string", "maxLength": 2000 },
+        "heroCtaText": { "type": "string", "maxLength": 100 },
+        "aboutHeroTag": { "type": "string", "maxLength": 100 },
+        "aboutTitle": { "type": "string", "maxLength": 300 },
+        "aboutDescription": { "type": "string", "maxLength": 4000 },
+        "aboutConciergeTag": { "type": "string", "maxLength": 100 },
+        "aboutConciergeTitle": { "type": "string", "maxLength": 200 },
+        "aboutConciergeDesc": { "type": "string", "maxLength": 2000 },
+        "aboutInstagram": { "type": "string", "maxLength": 100 },
+        "aboutEmail": { "type": "string", "maxLength": 150 },
+        "aboutPhone": { "type": "string", "maxLength": 50 },
+        "ecosystemPartners": { "type": "array", "description": "List of ecosystem partner objects" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      }
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Storefront product items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "category": { "type": "string", "maxLength": 100 },
+        "categoryLabel": { "type": "string", "maxLength": 100 },
+        "image": { "type": "string", "maxLength": 10000 },
+        "images": { "type": "array" },
+        "description": { "type": "string", "maxLength": 4000 },
+        "materials": { "type": "string", "maxLength": 500 },
+        "inStock": { "type": "boolean" },
+        "featured": { "type": "boolean" },
+        "variants": { "type": "array" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "isNewRelease": { "type": "boolean" },
+        "isBestSeller": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "price"]
+    },
+    "PortfolioMember": {
+      "title": "Portfolio Member",
+      "description": "Contributor & member portfolio record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "role": { "type": "string", "maxLength": 150 },
+        "balance": { "type": "number" },
+        "avatar": { "type": "string", "maxLength": 5000 },
+        "bio": { "type": "string", "maxLength": 2000 },
+        "contributions": { "type": "number" },
+        "joinedDate": { "type": "string", "maxLength": 100 },
+        "skills": { "type": "array" },
+        "depositHistory": { "type": "array" },
+        "chartHistory": { "type": "array" },
+        "tier": { "type": "string", "maxLength": 50 },
+        "lastDeposit": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "balance"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "Invoice order records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "invoiceNumber": { "type": "string", "maxLength": 100 },
+        "date": { "type": "string", "maxLength": 50 },
+        "dueDate": { "type": "string", "maxLength": 50 },
+        "buyer": { "type": "object" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "tax": { "type": "number" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "maxLength": 50 },
+        "notes": { "type": "string", "maxLength": 2000 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "invoiceNumber", "total"]
+    },
+    "Buyer": {
+      "title": "Buyer",
+      "description": "Master buyer records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 150 },
+        "address": { "type": "string", "maxLength": 500 },
+        "joinedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "name"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "System administrators and owners",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string", "maxLength": 50 },
+        "name": { "type": "string", "maxLength": 150 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/cms_settings/{docId}": {
+      "schema": "CmsSettings",
+      "description": "Global CMS store and landing settings"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Store products catalogue"
+    },
+    "/portfolio_members/{memberId}": {
+      "schema": "PortfolioMember",
+      "description": "Portfolio contributors & balances"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Invoices and transaction billing records"
+    },
+    "/buyers/{buyerId}": {
+      "schema": "Buyer",
+      "description": "Customer and buyer profiles"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Admin and owner authorization whitelist"
+    }
+  }
+}

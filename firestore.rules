@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // CMS Settings
+    match /cms_settings/{docId} {
+      allow read, write: if true;
+    }
+
+    // Products Catalogue
+    match /products/{productId} {
+      allow read, write: if true;
+    }
+
+    // Portfolio Members & Tabungan
+    match /portfolio_members/{memberId} {
+      allow read, write: if true;
+    }
+
+    // Invoices
+    match /invoices/{invoiceId} {
+      allow read, write: if true;
+    }
+
+    // Buyers
+    match /buyers/{buyerId} {
+      allow read, write: if true;
+    }
+
+    // Admins
+    match /admins/{adminId} {
+      allow read, write: if true;
+    }
+  }
+}

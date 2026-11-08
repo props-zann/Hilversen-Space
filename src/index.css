@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode in Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: 'TT Turns';
+  src: local('TT Turns'), local('TT-Turns'), local('TTTurns');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "TT Turns", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  --color-blue-950: #030712;
+  --color-blue-900: #091024;
+  --color-blue-800: #1e3a8a;
+  --color-blue-700: #1d4ed8;
+  --color-blue-600: #2563eb;
+  --color-blue-500: #3b82f6;
+  --color-blue-400: #60a5fa;
+  --color-blue-100: #dbeafe;
+  --color-blue-50: #eff6ff;
+}
+
+* {
+  font-family: "TT Turns", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body {
+  font-family: "TT Turns", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300; /* TT Turns Light (300) for body text, subtitle, and descriptions */
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* TT Turns Semi Bold (600) for Main Headline & Display Titles */
+h1, .display-headline {
+  font-family: "TT Turns", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -1.44px !important;
+}
+
+/* TT Turns Semi Bold (600) for Numbers, Currency & Tabular Figures */
+.tabular-nums, .font-mono, .price-number, input[type="number"], .currency-val {
+  font-family: "TT Turns", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* Section Headings & Subheadings: Default to TT Turns Medium (500) but allow overrides */
+h2, h3, h4, .section-heading {
+  font-family: "TT Turns", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-weight: 500;
+}
+
+/* Actual Serif Font Class for elegant classic items */
+.font-serif {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+}
+
+/* Base weights for specific elements only when classes are not specified */
+p, .description-text {
+  font-weight: 300;
+}
+
+/* Allow components to set their own button, nav, and label weights using Tailwind utility classes */
+
+/* Keyframe for Ecosystem Partners Infinite Marquee Loop */
+@keyframes infiniteMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: infiniteMarquee 22s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   WARM BOOK-PAPER LIGHT MODE THEME (Global Utility Overrides)
+   Replaces stark cold white (#FFFFFF) with authentic warm ivory book paper tones
+   ========================================================================== */
+html:not(.dark) {
+  background-color: #F7F3E9 !important;
+  color: #201C16 !important;
+}
+
+html:not(.dark) body {
+  font-family: "TT Turns", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  font-size: 0.95rem;
+  background-color: #F7F3E9 !important;
+  color: #201C16 !important;
+}
+
+/* Map white containers to warm paper surface */
+html:not(.dark) .bg-white,
+html:not(.dark) .bg-white\/95 {
+  background-color: #FAF6EE !important;
+}
+
+/* Map light grays to warm paper shades */
+html:not(.dark) .bg-slate-50,
+html:not(.dark) .bg-neutral-50,
+html:not(.dark) .bg-\[\#FAFAFA\],
+html:not(.dark) .bg-\[\#FAF7F0\] {
+  background-color: #F3EDE0 !important;
+}
+
+html:not(.dark) .bg-slate-100,
+html:not(.dark) .bg-neutral-100,
+html:not(.dark) .bg-\[\#F2EDE1\] {
+  background-color: #EBE3D3 !important;
+}
+
+/* Map borders to warm bookbinding lines */
+html:not(.dark) .border-slate-200,
+html:not(.dark) .border-slate-100,
+html:not(.dark) .border-slate-300,
+html:not(.dark) .border-neutral-200,
+html:not(.dark) .border-\[\#EAE3D2\],
+html:not(.dark) .border-\[\#EFE8DA\] {
+  border-color: #E2D8C3 !important;
+}
+
+/* ==========================================================================
+   OLED PURE BLACK DARK MODE THEME
+   ========================================================================== */
+html.dark,
+html.dark body,
+body.dark {
+  background-color: #000000 !important;
+  color: #f8fafc !important;
+}
+
+/* Custom scrollbar matching macOS style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+  background-clip: padding-box;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+  background-clip: padding-box;
+}

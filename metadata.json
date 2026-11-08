@@ -1,0 +1,8 @@
+{
+  "name": "Newest Hilversen Atelier",
+  "description": "Toko online dan platform gaya hidup elegan Hilversen dengan koleksi pilihan, portofolio saldo personal, dan jadwal sholat terpadu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
